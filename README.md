@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+#Configurações
+
+
+### `Config`
+- NODE 16
+- git clone https://github.com/ThiagoAlvesPHP/API-Rest-GITHUB.git
+- yarn install
+- yarn start
+- src/views/home/index.jsx - const TOKEN = "SEU_TOKEN";
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
