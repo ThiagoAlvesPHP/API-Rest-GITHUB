@@ -1,0 +1,26 @@
+.user-list {
+    .MuiPaper-root {
+        table {
+            thead {
+                tr {
+                    th {
+                        &:first-child, &:last-child {
+                            width: 40px;
+                        }
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    th {
+                        .links {
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                        }
+                    } 
+                }
+            }
+        }
+    }
+}

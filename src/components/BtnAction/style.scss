@@ -1,0 +1,36 @@
+.btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .edit, .delete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        color: #FFF;
+        transition: all ease .3s;
+
+        
+    }
+
+    .edit { 
+        background-color: green;
+
+        &:hover {
+            transform: scale(1.03);
+            background-color: rgba(0, 128, 0, 0.8);
+        }
+    }
+
+    .delete {
+        background-color: red;
+
+        &:hover {
+            transform: scale(1.03);
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+    }
+}
