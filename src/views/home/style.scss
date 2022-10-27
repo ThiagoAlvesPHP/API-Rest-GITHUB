@@ -1,7 +1,32 @@
 @import './mixins.scss';
 
 .home {
+    padding: 20px;
     
+    .actions {
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .list {
+        .titles {
+            display: flex;
+            padding: 10px;
+            background-color: green;
+            color: #FFF;
+
+            .title {
+                font-weight: 600;
+                text-transform: uppercase;
+                flex: 1;
+
+                &:first-child {
+                    flex: 2;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 1024px) {

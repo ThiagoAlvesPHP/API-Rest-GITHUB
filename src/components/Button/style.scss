@@ -1,0 +1,23 @@
+.Button {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid green;
+    color: green;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease .5s;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    &:hover {
+        background-color: green;
+        color: #FFF;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .Button {
+        
+    }
+}

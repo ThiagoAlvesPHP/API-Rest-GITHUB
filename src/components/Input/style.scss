@@ -1,0 +1,14 @@
+.Input {
+    input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid green;
+        color: green;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .Input {
+        
+    }
+}

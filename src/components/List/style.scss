@@ -1,0 +1,27 @@
+.List {
+    display: flex;
+    padding: 8px 10px;
+    margin: 4px 0;
+    background-color: rgb(181, 255, 230);
+    transition: all ease .5s;
+
+    a {
+        flex: 2;
+        transition: all ease .5s;
+    }
+    span {
+        flex: 1;
+        transition: all ease .5s;
+    }
+
+    &:hover {
+        transform: scale(1.01);
+        background-color: rgb(89, 252, 198);
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .List {
+
+    }
+}
