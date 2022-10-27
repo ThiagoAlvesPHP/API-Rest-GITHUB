@@ -1,6 +1,3 @@
-#Configurações
-
-
 ### `Config`
 - NODE 16
 - git clone https://github.com/ThiagoAlvesPHP/API-Rest-GITHUB.git
