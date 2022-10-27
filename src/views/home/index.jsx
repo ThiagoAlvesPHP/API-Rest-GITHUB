@@ -1,6 +1,7 @@
 // LIBs
 import React, { useEffect, useState, useRef } from 'react';
 import { Octokit } from "octokit";
+import { format } from 'date-fns';
 
 // COMPONENTs
 import { Button } from "../../components/Button";
@@ -21,20 +22,18 @@ export function HomeView() {
     auth();
   }, []);
 
-  async function auth(search = '') {
+  async function auth(search = '', order = false) {
     const octokit = await new Octokit({
       auth: TOKEN
     });
-    const {
-      data: { login, id, name },
-    } = await octokit.rest.users.getAuthenticated();
-    setLogin(login);
+    const { data: { login, id, name }, } = await octokit.rest.users.getAuthenticated();
+
     let repos = await octokit.request(`GET https://api.github.com/users/${login}/repos`);
 
     if (search.length > 0) {
       let arr = [];
       repos.data.map((el) => {
-        let result = el.full_name.indexOf(search);
+        let result = el.full_name.toLowerCase().indexOf(search.toLowerCase());
         if (result > -1) {
           arr.push({
             id:el.id,
@@ -52,15 +51,28 @@ export function HomeView() {
       setList(repos.data);
     }
 
-    // console.log(repos.data);
+    if (order) {
+      let arr = [...repos.data];
+      arr.sort((a, b) => (a.updated_at < b.updated_at)?1:(b.updated_at < a.updated_at)?-1:0);
+      setList(arr);
+    }
+
+    setLogin(login);
   }
 
   /**
    * order alfabebica
    */
-  function order() {
+  function orderAlfa() {
     auth();
     setSearch('');
+  }
+
+  /**
+   * order data update
+   */
+  function orderData() {
+    auth("", true);
   }
 
   useEffect(()=> {
@@ -73,12 +85,12 @@ export function HomeView() {
 
   return (
     <div className={`home`}>
-      Usuario: {login ? login : 'Não Logado'}
+      Usuário: <span className='name'>{login ? login : 'Não Logado'}</span>
       <hr />
 
       <div className="actions">
-        <Button title="Ordem Alfabética" onOrder={order} />
-        <Button title="Ordenar por data de atualização" onOrder={order} />
+        <Button title="Ordem Alfabética" onOrder={orderAlfa} />
+        <Button title="Ordenar por data de atualização" onOrder={orderData} />
         <Input search={search} setSearch={setSearch} />
       </div>
       
@@ -97,8 +109,8 @@ export function HomeView() {
               html_url={el.html_url} 
               full_name={el.full_name}
               language={el.language} 
-              created_at={el.created_at} 
-              updated_at={el.updated_at}
+              created_at={format(new Date(el.created_at), 'dd/MM/yyyy H:i:s')} 
+              updated_at={format(new Date(el.updated_at), 'dd/MM/yyyy H:i:s')}
             />
           )}
         </section>
